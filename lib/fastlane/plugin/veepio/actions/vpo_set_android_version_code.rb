@@ -2,7 +2,7 @@ require "java-properties"
 
 module Fastlane
   module Actions
-    class VpoIncrementAndroidVersionCodeAction < Action
+    class VpoGetAndroidVersionCodeAction < Action
 
       def self.versionName( _properties_path)
           properties = JavaProperties.load(_properties_path)
@@ -27,12 +27,12 @@ module Fastlane
       def self.run(params)
         _project_path = params[:project]
         _properties_path = "#{_project_path}/version.properties"
-        incrementVersionCode(_properties_path)
-        UI.message("incremented version code:#{versionCode(_properties_path)}")
+        UI.message("version code: #{versionCode(_properties_path)}")
+        versionCode(_properties_path)
       end
 
       def self.description
-        "increment Android project version code in version.properties file for gradle project"
+        "get Android project version code in version.properties file for gradle project"
       end
 
       def self.available_options
@@ -40,6 +40,7 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :project,
                                        description: "path to project",
                                        is_string: true)
+
         ]
       end
 
