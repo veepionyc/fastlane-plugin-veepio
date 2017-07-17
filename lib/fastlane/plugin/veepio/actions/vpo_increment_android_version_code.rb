@@ -2,7 +2,7 @@ require "java-properties"
 
 module Fastlane
   module Actions
-    class IncrementAndroidVersionCodeAction < Action
+    class VpoIncrementAndroidVersionCodeAction < Action
 
       def self.versionName( _properties_path)
           properties = JavaProperties.load(_properties_path)

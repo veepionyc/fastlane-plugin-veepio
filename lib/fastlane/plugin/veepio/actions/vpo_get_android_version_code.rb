@@ -2,7 +2,7 @@ require "java-properties"
 
 module Fastlane
   module Actions
-    class GetAndroidVersionNameAction < Action
+    class VpoGetAndroidVersionCodeAction < Action
 
       def self.versionName( _properties_path)
           properties = JavaProperties.load(_properties_path)
@@ -27,12 +27,12 @@ module Fastlane
       def self.run(params)
         _project_path = params[:project]
         _properties_path = "#{_project_path}/version.properties"
-        UI.message("version name: #{versionName(_properties_path)}")
-        versionName(_properties_path)
+        UI.message("version code: #{versionCode(_properties_path)}")
+        versionCode(_properties_path)
       end
 
       def self.description
-        "get Android project version name in version.properties file for gradle project"
+        "get Android project version code in version.properties file for gradle project"
       end
 
       def self.available_options

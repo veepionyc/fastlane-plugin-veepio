@@ -11,7 +11,7 @@ module Fastlane
 
 
 
-        class ValidatePodFileAction < Action
+        class VpoValidatePodFileAction < Action
 
             def self.validate
                 result = true

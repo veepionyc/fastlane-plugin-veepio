@@ -1,8 +1,8 @@
 module Fastlane
   module Actions
-    class VeepioAction < Action
+    class VpoVeepio3Action < Action
       def self.run(params)
-        UI.message("The veepio plugin is working!")
+        UI.message("The veepio3 plugin is working!")
       end
 
       def self.description

@@ -2,19 +2,20 @@ require "java-properties"
 
 module Fastlane
   module Actions
-    class GetJavaPropertyValueAction < Action
+    class VpoPutJavaPropertyValueAction < Action
 
       def self.run(params)
         _properties_path = params[:path]
         _key = params[:key]
+        _value = params[:value]
         _properties = JavaProperties.load(_properties_path)
-        _value = _properties[:"#{_key}"]
-        UI.message("propertyKey:#{_key} value:#{_value}")
-
+       _properties[:"#{_key}"] = _value
+        JavaProperties.write(_properties, _properties_path)
+        UI.message("write propertyKey:#{_key} value:#{_value}")
       end
 
       def self.description
-        "read key val from java properties file"
+        "write key val to java properties file"
       end
 
       def self.available_options
@@ -24,7 +25,10 @@ module Fastlane
                                        is_string: true),
           FastlaneCore::ConfigItem.new(key: :key,
                                        description: "property key",
-                                       is_string: true)
+                                       is_string: true),
+         FastlaneCore::ConfigItem.new(key: :value,
+                                      description: "property value",
+                                      is_string: true)
         ]
       end
 
