@@ -5,13 +5,14 @@ module Fastlane
     class VpoPutJavaPropertyValueAction < Action
 
       def self.run(params)
+        UI.message("path:#{params[:path]} key:#{params[:key]} value:#{params[:value]}")
         _properties_path = params[:path]
         _key = params[:key]
         _value = params[:value]
         _properties = JavaProperties.load(_properties_path)
        _properties[:"#{_key}"] = _value
         JavaProperties.write(_properties, _properties_path)
-        UI.message("write propertyKey:#{_key} value:#{_value}")
+        UI.message("success: write propertyKey:#{_key} value:#{_value}")
       end
 
       def self.description

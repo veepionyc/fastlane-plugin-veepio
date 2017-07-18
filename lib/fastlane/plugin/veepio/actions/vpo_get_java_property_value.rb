@@ -20,7 +20,7 @@ module Fastlane
       def self.available_options
         [
           FastlaneCore::ConfigItem.new(key: :path,
-                                       description: "path to property file",
+                                       description: "paths to property file",
                                        is_string: true),
           FastlaneCore::ConfigItem.new(key: :key,
                                        description: "property key",
