@@ -18,7 +18,7 @@ module Fastlane
                 File.foreach( 'Podfile' ) do |line|
                     #binding.pry
 
-                    if line =~ /^[^\#]+=>/
+                    if line =~ /path[^\=]+=>/
                         puts "invalidated"
                         puts line
 
